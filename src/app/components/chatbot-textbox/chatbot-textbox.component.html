@@ -1,0 +1,112 @@
+<div class="chatbot-textbox__header">
+  <p class="chatbot-textbox__header-text">SIP Asistent</p>
+  <span class="icon-right" (click)="onCloseChatbot()">
+    <i class="pi pi-times"></i>
+  </span>
+</div>
+
+<div class="categories-container">
+  <div class="categories-toggle" (click)="toggleCategories()">
+    <span>Kategorije</span>
+    <div class="categories-toggle__actions">
+      @if (selectedCategory()) {
+        <button type="button" class="chip-clear-btn" (click)="clearSelectedCategory($event)">
+          <i class="pi pi-times"></i>
+        </button>
+      }
+      <i class="pi" [ngClass]="showCategories() ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+    </div>
+  </div>
+
+  @if (showCategories()) {
+    <div class="chatbot-textbox__categories">
+      <mat-chip-set>
+        @for (category of categories; track category.label) {
+          <button
+            mat-chip
+            [class.selected]="selectedCategory() === category.label"
+            [class.category-chip--wide]="category.label.length > 28"
+            (click)="onCategorySelected(category.label)"
+            class="category-chip"
+          >
+            @if (category.icon) {
+              <img [src]="category.icon" class="chip-icon" alt="" />
+            }
+            {{ category.label }}
+          </button>
+        }
+      </mat-chip-set>
+    </div>
+  }
+</div>
+
+@if (!showCategories() && selectedCategory()) {
+  <div class="chatbot-textbox__categories-compact">
+    <mat-chip-set>
+      <button
+        mat-chip
+        class="category-chip selected"
+        (click)="onCategorySelected(selectedCategory()!)"
+      >
+        @for (category of categories; track category.label) {
+          @if (category.label === selectedCategory() && category.icon) {
+            <img [src]="category.icon" class="chip-icon" alt="" />
+          }
+        }
+        {{ selectedCategory() }}
+      </button>
+    </mat-chip-set>
+  </div>
+}
+
+<div class="chatbot-textbox__body">
+  @if (messages$ | async; as messages) {
+    @for (message of messages; track message; let index = $index) {
+      <div
+        class="chatbot-textbox__message"
+        [ngStyle]="{ 'flex-direction': isAssistantMessage(message) ? 'row' : 'row-reverse' }"
+      >
+        <img
+          [src]="getIcon(message)"
+          class="svg-container"
+          alt=""
+          [ngClass]="isAssistantMessage(message) ? 'agent-icon' : 'user-icon'"
+        />
+        <p
+          [ngClass]="[
+            'chatbot-text',
+            isAssistantMessage(message) ? 'chatbot-message' : 'user-message',
+          ]"
+        >
+          {{ message.content }}
+        </p>
+      </div>
+    }
+  }
+  @if (isTyping$ | async) {
+    <div class="chatbot-textbox__message">
+      <img [src]="icons.agent" class="svg-container agent-icon" alt="" />
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+  }
+</div>
+
+<hr class="horizontal-line" />
+<div class="footer">
+  <input
+    type="text"
+    pInputText
+    [disabled]="(isTyping$ | async) ?? false"
+    [ngModel]="inputText()"
+    (ngModelChange)="inputText.set($event)"
+    (keydown.enter)="onSendForm()"
+  />
+
+  <div class="send-icon-container" [class.disabled-icon]="!inputText()" (click)="onSendForm()">
+    <i class="pi pi-send"></i>
+  </div>
+</div>

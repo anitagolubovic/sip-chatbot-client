@@ -1,0 +1,13 @@
+.app__container {
+  position: static;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  pointer-events: auto;
+}

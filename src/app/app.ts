@@ -1,12 +1,17 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { ChatbotIcons } from './models/chatbot';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ChatbotComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('sip-chatbot-client');
+  protected readonly chatbotIcons: ChatbotIcons = {
+    agent: 'assets/agent.svg',
+    user: 'assets/user.svg',
+  };
 }

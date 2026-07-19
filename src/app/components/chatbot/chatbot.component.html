@@ -1,0 +1,5 @@
+@if (!showTextBox()) {
+  <chatbot-icon [iconChatbot]="icons.agent" (chatbotClicked)="onChatbotClicked()"></chatbot-icon>
+} @else {
+  <chatbot-textbox [icons]="icons" (closeChatbot)="onCloseChatbot()"></chatbot-textbox>
+}

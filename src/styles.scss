@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'primeicons/primeicons.css';
+
+/* Material Design Theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --bg-header-chatbot-box-message: #55bb26;
+  --bg-primary-hover: #489e20;
+  --bg-chatbot-icon-container: #6ec83c;
+  --chatbot-scrollbar-color: #9dd96f;
+  --color-header-chatbot-box-message: white;
+  --bg-textbox: #f5fbf1;
+  --color-user-message: #2f5d1e;
+  --color-chatbot-message: white;
+  --bg-user-icon-container: #e6f5da;
+  --bg-surface-soft: #fcfefb;
+  --bg-surface-muted: #eef8e7;
+  --border-primary-soft: rgba(85, 187, 38, 0.16);
+  --border-primary-medium: rgba(85, 187, 38, 0.28);
+  --shadow-primary-soft: rgba(85, 187, 38, 0.16);
+  --shadow-primary-medium: rgba(85, 187, 38, 0.28);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(85, 187, 38, 0.08), transparent 34%),
+    linear-gradient(180deg, #fbfef9 0%, #f5fbf1 100%);
+  color: #36512c;
+}
