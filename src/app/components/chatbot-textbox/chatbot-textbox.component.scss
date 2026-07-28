@@ -5,26 +5,20 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: var(--radius-base);
   position: fixed;
   right: 2rem;
   bottom: 2rem;
-  background-color: var(--bg-textbox);
-  box-shadow:
-    0 20px 60px var(--shadow-primary-soft),
-    0 0 1px rgba(0, 0, 0, 0.05);
+  background-color: var(--color-surface-green);
+  box-shadow: var(--shadow-md);
   z-index: 1001;
-  border: 1px solid var(--border-primary-soft);
+  border: 1px solid var(--color-border-brand);
 }
 
 .chatbot-textbox__ {
   &header {
-    background: linear-gradient(
-      135deg,
-      var(--bg-header-chatbot-box-message),
-      var(--bg-chatbot-icon-container)
-    );
-    color: var(--color-header-chatbot-box-message);
+    background: var(--color-brand);
+    color: var(--color-text-on-brand);
     display: flex;
     align-items: center;
     padding: 0.75rem 0.5rem;
@@ -44,7 +38,7 @@
     flex-direction: column;
     overflow: auto;
     row-gap: 1rem;
-    background: linear-gradient(to bottom, var(--bg-surface-muted) 0%, var(--bg-surface-soft) 100%);
+    background: var(--color-surface);
   }
 
   &message {
@@ -87,7 +81,7 @@
 .spinner > div {
   width: 10px;
   height: 10px;
-  background-color: var(--bg-chatbot-icon-container);
+  background-color: var(--color-brand);
   border-radius: 50%;
   display: inline-block;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -109,7 +103,7 @@
 .horizontal-line {
   width: calc(100% - 2rem);
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--chatbot-scrollbar-color), transparent);
+  background: linear-gradient(to right, transparent, var(--color-brand-light), transparent);
   border: none;
   margin: 0.5rem 0;
 }
@@ -120,14 +114,13 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chatbot-text {
-  color: #36512c;
-  background-color: white;
-  border-radius: 14px;
-  border: 1px solid rgba(85, 187, 38, 0.1);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border-brand);
   text-align: left;
   font-size: 0.95rem;
   font-weight: 500;
@@ -137,29 +130,28 @@
   padding: 0.75rem 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .chatbot-message {
-  background-color: var(--bg-chatbot-icon-container);
-  color: var(--color-chatbot-message);
+  background-color: var(--color-brand);
+  color: var(--color-text-on-brand);
   border: none;
 }
 
 .user-message {
-  background-color: var(--bg-user-icon-container);
-  color: var(--color-user-message);
+  background-color: var(--color-brand-lightest);
+  color: var(--color-text);
 }
 
 .agent-icon {
-  background-color: var(--bg-chatbot-icon-container);
+  background-color: var(--color-brand);
   padding: 0.3rem;
 }
 
 .user-icon {
   padding: 0.3rem;
-  border: 2px solid var(--chatbot-scrollbar-color);
-  background-color: var(--bg-user-icon-container);
+  border: 2px solid var(--color-brand-light);
+  background-color: var(--color-brand-lightest);
 }
 
 .footer {
@@ -169,7 +161,8 @@
   align-items: center;
   padding: 1rem;
   gap: 0.75rem;
-  background: linear-gradient(to right, rgba(85, 187, 38, 0.02), transparent);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-brand);
 }
 
 .send-icon-container {
@@ -177,23 +170,17 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--bg-chatbot-icon-container),
-    var(--bg-header-chatbot-box-message)
-  );
-  color: white;
-  width: 42px;
-  height: 42px;
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(85, 187, 38, 0.24);
+  transition: background-color 0.2s ease;
   flex-shrink: 0;
 
   &:hover:not(.disabled-icon) {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(85, 187, 38, 0.3);
+    background: var(--color-brand-hover);
   }
 
   &:active:not(.disabled-icon) {
@@ -204,7 +191,7 @@
 .disabled-icon {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #ccc !important;
+  background: var(--color-disabled) !important;
 
   &:hover {
     transform: none;
@@ -234,24 +221,22 @@
 }
 
 input {
-  border: 2px solid rgba(139, 195, 74, 0.2);
-  border: 2px solid rgba(85, 187, 38, 0.16);
-  border-radius: 20px;
-  font-size: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  font-size: 14px;
   width: 85%;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.85rem;
   outline: none;
-  transition: all 0.3s ease;
-  background-color: #fafafa;
+  transition: border-color 0.2s ease;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 
   &:focus {
-    border-color: var(--bg-chatbot-icon-container);
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.1);
+    border-color: var(--color-brand);
   }
 
   &:disabled {
-    background-color: #f5f5f5;
+    background-color: var(--color-disabled-surface);
     cursor: not-allowed;
     opacity: 0.6;
   }
@@ -261,26 +246,24 @@ input {
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0.75rem;
-  background: linear-gradient(to right, rgba(139, 195, 74, 0.08), transparent);
-  background: linear-gradient(to right, rgba(85, 187, 38, 0.08), transparent);
-  border-bottom: 1px solid rgba(85, 187, 38, 0.1);
+  background: var(--color-surface-green);
+  border-bottom: 1px solid var(--color-border-brand);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
 
   &:hover {
-    background: linear-gradient(to right, rgba(139, 195, 74, 0.15), transparent);
-    background: linear-gradient(to right, rgba(85, 187, 38, 0.14), transparent);
+    background: var(--color-brand-lightest);
   }
 
   span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--teal-700);
+    color: var(--color-text);
   }
 
   i {
-    font-size: 0.9rem;
-    color: var(--teal-700);
+    font-size: 0.85rem;
+    color: var(--color-text-subtle);
     transition: transform 0.3s ease;
   }
 }
@@ -302,11 +285,10 @@ input {
   left: 0;
   right: 0;
   padding: 0.75rem;
-  background: linear-gradient(to bottom, #f1f8e9 0%, #fafbf8 100%);
-  background: linear-gradient(to bottom, var(--bg-surface-muted) 0%, var(--bg-surface-soft) 100%);
-  border-bottom: 1px solid rgba(85, 187, 38, 0.1);
-  box-shadow: 0 12px 24px var(--shadow-primary-soft, rgba(0, 0, 0, 0.15));
-  animation: slideDown 0.3s ease;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-brand);
+  box-shadow: var(--shadow-sm);
+  animation: slideDown 0.2s ease;
   max-height: calc(min(36rem, 100dvh - 4rem) - 6.5rem);
   overflow-y: auto;
   scrollbar-width: none;
@@ -322,20 +304,19 @@ input {
 
   // Material renders the chips inside this wrapper, so the grid belongs here.
   ::ng-deep .mdc-evolution-chip-set__chips {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin: 0;
-    align-items: stretch;
+    align-items: flex-start;
   }
 }
 
 .chatbot-textbox__categories-compact {
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(to right, rgba(139, 195, 74, 0.05), transparent);
-  background: linear-gradient(to right, rgba(85, 187, 38, 0.05), transparent);
-  border-bottom: 1px solid rgba(85, 187, 38, 0.1);
-  animation: slideDown 0.3s ease;
+  background: var(--color-surface-green);
+  border-bottom: 1px solid var(--color-border-brand);
+  animation: slideDown 0.2s ease;
 
   mat-chip-set {
     display: flex;
@@ -350,7 +331,7 @@ input {
   border: none;
   background: transparent;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--color-text-subtle);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -358,7 +339,7 @@ input {
 }
 
 .chip-clear-btn:hover {
-  color: #111827;
+  color: var(--color-text);
 }
 
 @keyframes slideDown {
@@ -373,17 +354,21 @@ input {
 }
 
 .category-chip {
-  font-size: 0.78rem;
-  line-height: 1.15;
+  font-size: 0.75rem;
+  line-height: 1.2;
   height: auto;
-  min-height: 2.5rem;
-  width: 100%;
-  padding: 0.45rem 0.6rem !important;
-  background-color: white !important;
-  border: 2px solid rgba(139, 195, 74, 0.2) !important;
-  border: 2px solid rgba(85, 187, 38, 0.16) !important;
-  color: var(--teal-700) !important;
-  transition: all 0.3s ease;
+  min-height: 1.9rem;
+  width: auto;
+  max-width: 100%;
+  flex: 0 0 auto;
+  padding: 0.3rem 0.55rem !important;
+  border-radius: var(--radius-base) !important;
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text) !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
   cursor: pointer;
   display: flex !important;
   align-items: center;
@@ -391,25 +376,31 @@ input {
   text-align: left;
 
   &:hover:not(.selected) {
-    border-color: rgba(85, 187, 38, 0.32) !important;
-    background-color: rgba(85, 187, 38, 0.05) !important;
+    border-color: var(--color-brand) !important;
+    background-color: var(--color-surface-green) !important;
   }
 
   &.selected {
-    background-color: var(--bg-chatbot-icon-container) !important;
-    border-color: var(--bg-chatbot-icon-container) !important;
-    color: white !important;
+    background-color: var(--color-brand) !important;
+    border-color: var(--color-brand) !important;
+    color: var(--color-text-on-brand) !important;
   }
 
   .chip-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.4rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-right: 0.35rem;
     object-fit: contain;
     flex-shrink: 0;
   }
 
-  &.category-chip--wide {
-    grid-column: 1 / -1;
+  // Material truncates the chip label with an ellipsis by default; let it wrap instead.
+  ::ng-deep .mdc-evolution-chip__text-label,
+  ::ng-deep .mat-mdc-chip-action-label,
+  ::ng-deep .mdc-evolution-chip__action--primary {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    min-width: 0;
   }
 }

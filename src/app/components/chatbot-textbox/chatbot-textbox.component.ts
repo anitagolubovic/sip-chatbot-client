@@ -24,18 +24,13 @@ export class ChatbotTextbox {
   isTyping$ = this.chatbotService.isTyping$;
 
   categories = [
-    { label: 'Nastava na Osnovnim akademskim studijama', icon: './assets/bookmark.svg' },
     { label: 'Kalendar aktivnosti', icon: './assets/bookmark.svg' },
+    { label: 'Raspored časova', icon: './assets/bookmark.svg' },
     { label: 'Polaganje ispita', icon: './assets/bookmark.svg' },
     {
-      label: 'Upis nove školske godina na Osnovnim akademskim studijama',
+      label: 'Dokumentacija i administracija',
       icon: './assets/bookmark.svg',
     },
-    { label: 'Master akademske studije', icon: './assets/bookmark.svg' },
-    { label: 'Doktorske akademske studije', icon: './assets/bookmark.svg' },
-    { label: 'Obrasci i liste izbornih predmeta', icon: './assets/bookmark.svg' },
-    { label: 'Literatura', icon: './assets/bookmark.svg' },
-    { label: 'Rezultati ispita', icon: './assets/bookmark.svg' },
     { label: 'Stipendije, konkursi i razmene studenata', icon: './assets/bookmark.svg' },
   ];
 

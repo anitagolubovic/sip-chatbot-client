@@ -25,7 +25,6 @@
           <button
             mat-chip
             [class.selected]="selectedCategory() === category.label"
-            [class.category-chip--wide]="category.label.length > 28"
             (click)="onCategorySelected(category.label)"
             class="category-chip"
           >
