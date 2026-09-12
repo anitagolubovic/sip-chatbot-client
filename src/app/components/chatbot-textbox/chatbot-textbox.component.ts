@@ -57,7 +57,6 @@ export class ChatbotTextbox {
       this.selectedCategory.set(null);
     } else {
       this.selectedCategory.set(category);
-      this.chatbotService.sendQuery(category, category);
     }
   }
 

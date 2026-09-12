@@ -5,7 +5,7 @@ import { ChatMessage, SendMessageData } from '../app/models/chatbot';
 import { Maybe } from './models/types';
 import { isDefined } from './types.helper';
 
-const MESSAGE_BUFFER_SIZE = 4;
+const MESSAGE_BUFFER_SIZE = 6;
 
 @Injectable({
   providedIn: 'root',
@@ -65,11 +65,9 @@ export class ChatbotService {
     ]);
     const data: SendMessageData = { question, conversationHistory: [] };
 
-    if (isDefined(category)) {
-      const conversationHistory = this.messagesSubject.value.slice(-MESSAGE_BUFFER_SIZE);
-      data.conversationHistory = conversationHistory;
-      data.category = category;
-    }
+    data.conversationHistory = currentMessages.slice(-MESSAGE_BUFFER_SIZE);
+
+    data.category = category;
 
     this.socket.emit('sendMessage', data);
   }
